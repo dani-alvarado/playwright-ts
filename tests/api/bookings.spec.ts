@@ -5,7 +5,7 @@ import { BookingData } from "../../data/Booking";
 import data from "../../data/json/booking.json";
 import partialData from "../../data/json/partialBooking.json";
 
-test.describe.only("Bookings", () => {
+test.describe("Bookings", () => {
   let auth: Authentication;
   let booking: Booking;
   let bookingData: BookingData;
