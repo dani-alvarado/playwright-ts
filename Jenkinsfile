@@ -41,7 +41,9 @@ pipeline {
             }
         }
 
-        stage('Reporting') {
+    }
+    post {
+        always {
             steps {
                 echo '=== Generating and displaying report ==='
                 // Adjust this stage based on your Playwright test report format and location
