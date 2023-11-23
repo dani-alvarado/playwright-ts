@@ -20,20 +20,24 @@ npm run install-browsers
 
 ## Execution
 
-You have different options to run this repository. 
+You have different options to run this repository.
 
 # UI Automation
 
-To run UI testing automation for webpage (WIP) run the following command
+To run UI testing automation for webpage [Automation Exercise](https://automationexercise.com/) run the following command
+
 ```
 npm run test
 ```
+
 If you want to run specifically for a browser, you can add that to the command
 
-the options are: 
+the options are:
+
 - chromium
 - firefox
 - webkit
+
 ```
 npm run test:<browser>
 ```
@@ -45,16 +49,17 @@ By default, this command will run the tests headless. If you want to run them he
 ```
 npm run test:headed
 ```
+
 or
 
 ```
 npm run test:<browser>:headed
 ```
 
-## API automation
+# API automation
 
 To run API testing automation for the [Restful Booker API](https://restful-booker.herokuapp.com/apidoc/index.html), run the following command:
+
 ```
 npm run test:api
 ```
-

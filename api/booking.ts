@@ -58,4 +58,27 @@ export class Booking {
     });
     return await response;
   }
+
+  public async updateBooking(id: number, token: string, data: Object) {
+    const response = await this.request.patch(`/booking/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Cookie: `token=${token}`,
+      },
+      data: data,
+    });
+
+    return response;
+  }
+
+  public async deleteBooking(id: number, token: string) {
+    const response = await this.request.delete(`/booking/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: `token=${token}`,
+      },
+    });
+    return await response;
+  }
 }

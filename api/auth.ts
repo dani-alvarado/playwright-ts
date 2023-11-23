@@ -10,14 +10,17 @@ export class Authentication {
 
   public async createToken(username: string, password: string) {
     const response = await this.request.post("/auth", {
+      headers: {
+        "Content-Type": "application/json",
+      },
       data: {
         username: username,
         password: password,
       },
     });
-    expect(await response.ok()).toBeTruthy();
     const responseBody = await response.json();
-    this.setAuthToken(responseBody.token);
+    expect(await response.ok()).toBeTruthy();
+    this.setAuthToken(await responseBody.token);
     console.log(response.url());
   }
 
