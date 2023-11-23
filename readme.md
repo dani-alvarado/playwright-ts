@@ -8,6 +8,7 @@ This is a repository that contains a testing framework done in playwright using 
 2. [Execution](#execution)
 3. [UI Automation](#ui-automation)
 4. [API Automation](#api-automation)
+5. [Jenkins](#jenkins)
 
 ## Installation
 
@@ -22,7 +23,7 @@ npm run install-browsers
 
 You have different options to run this repository.
 
-# UI Automation
+## UI Automation
 
 To run UI testing automation for webpage [Automation Exercise](https://automationexercise.com/) run the following command
 
@@ -42,7 +43,7 @@ the options are:
 npm run test:<browser>
 ```
 
-## Notes
+### Notes
 
 By default, this command will run the tests headless. If you want to run them headed, run the following command:
 
@@ -56,10 +57,14 @@ or
 npm run test:<browser>:headed
 ```
 
-# API automation
+## API automation
 
 To run API testing automation for the [Restful Booker API](https://restful-booker.herokuapp.com/apidoc/index.html), run the following command:
 
 ```
 npm run test:api
 ```
+
+## Jenkins
+
+The repository contains a Jenkinsfile that allows you to create a pipeline in a jenkins server.
