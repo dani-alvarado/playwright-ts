@@ -3,6 +3,10 @@
 pipeline {
     agent any
 
+     triggers {
+        cron('H 8-18/2 * * 1-5')
+    }
+
     tools {nodejs "nodejs"}
 
     environment {
