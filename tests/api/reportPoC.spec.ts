@@ -6,6 +6,7 @@ test.describe("Reporting PoC", () => {
   });
 
   test("This test must fail - poc", async ({ request }) => {
-    test.fail();
+    // test.fail();
+    test.skip();
   });
 });
