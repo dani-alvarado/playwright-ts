@@ -4,7 +4,7 @@ pipeline {
     agent any
 
     environment {
-        GIT_REPO = 'https://github.com/your/repo.git'
+        GIT_REPO = 'https://github.com/dani-alvarado/playwright-ts.git'
         NODE_COMMAND = 'npm install'
     }
 
