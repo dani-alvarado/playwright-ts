@@ -11,7 +11,7 @@ pipeline {
 
     parameters {
         choice(name: 'BRANCH', choices: ['main', 'develop'], description: 'Choose the branch you want to execute')
-        choice(name: 'TEST_SCRIPT', choices: ['test', 'test:api', 'test:chromium', 'test:firefox', 'test:webkit', 'test:headed', 'test:chromium:headed', 'test:firefox:headed', 'test:webkit:headed'], description: 'Select the test script to run')
+        choice(name: 'TEST_SCRIPT', choices: ['test', 'test:api', 'test:chromium', 'test:firefox', 'test:webkit'], description: 'Select the test script to run')
     }
 
     stages {
