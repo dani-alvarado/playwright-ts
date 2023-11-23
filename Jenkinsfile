@@ -44,12 +44,10 @@ pipeline {
     }
     post {
         always {
-            steps {
                 echo '=== Generating and displaying report ==='
                 // Adjust this stage based on your Playwright test report format and location
                 // For example, if your Playwright tests generate an HTML report, you might use:
                 publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'playwright-report', reportFiles: '*.html', reportName: 'Report', reportTitles: ''])
-            }
         }
     }
 }
