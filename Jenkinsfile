@@ -7,7 +7,6 @@ pipeline {
 
     environment {
         GIT_REPO = 'https://github.com/dani-alvarado/playwright-ts.git'
-        NODE_COMMAND = 'npm install'
     }
 
     parameters {
@@ -20,7 +19,7 @@ pipeline {
             steps {
                 echo '=== Setting up environment ==='
                 sh 'export PATH=/usr/local/bin:/usr/bin:/usr/sbin:/sbin'
-                checkout([$class: 'GitSCM', branches: [[name: 'develop']], userRemoteConfigs: [[url: "${env.GIT_REPO}"]]])
+                checkout([$class: 'GitSCM', branches: [[name: '${BRANCH}']], userRemoteConfigs: [[url: "${env.GIT_REPO}"]]])
                 sh 'rm -rf node_modules'
                 sh 'rm -rf playwright-report'
                 sh 'rm -rf test-results'
