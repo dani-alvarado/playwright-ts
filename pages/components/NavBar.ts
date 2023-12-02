@@ -1,6 +1,6 @@
 import { Locator, Page, expect } from "@playwright/test";
 import { BasePage } from "../BasePage";
-import { NavBarButton } from "../../helpers/NavBarButton";
+import { NavBarButton } from "../../helpers/NavBarEnums";
 
 export class NavBar extends BasePage {
   readonly logo: Locator;
