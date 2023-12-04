@@ -18,12 +18,12 @@ export class LoginPage extends BasePage {
     super(page);
     this.loginSubtitle = page.getByText("Login to your account");
     this.registerSubtitle = page.getByText("New User Signup");
-    this.loginEmailField = page.locator('["data-qa"="login-email"]');
-    this.loginPasswordField = page.locator('["data-qa"="login-password"]');
-    this.loginButton = page.locator('["data-qa"="login-button"]');
-    this.registerNameField = page.locator('["data-qa"="signup-name"]');
-    this.registerEmailField = page.locator('["data-qa"="signup-email"]');
-    this.registerButton = page.locator('["data-qa"="signup-button"]');
+    this.loginEmailField = page.locator('[data-qa="login-email"]');
+    this.loginPasswordField = page.locator('[data-qa="login-password"]');
+    this.loginButton = page.locator('[data-qa="login-button"]');
+    this.registerNameField = page.locator('[data-qa="signup-name"]');
+    this.registerEmailField = page.locator('[data-qa="signup-email"]');
+    this.registerButton = page.locator('[data-qa="signup-button"]');
     this.errorMessage = page.getByText("Your email or password is incorrect!");
   }
 
@@ -71,6 +71,6 @@ export class LoginPage extends BasePage {
   }
 
   public async validateError() {
-    expect(await this.errorMessage).toBeVisible();
+    await expect(this.errorMessage).toBeVisible();
   }
 }

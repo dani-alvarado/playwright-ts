@@ -16,4 +16,8 @@ export class HomePage extends BasePage {
   }
 
   //methods for Home Page
+
+  public async navigateToHomePage() {
+    await this.page.goto("/");
+  }
 }
