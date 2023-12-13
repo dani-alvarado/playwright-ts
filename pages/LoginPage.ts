@@ -14,6 +14,9 @@ export class LoginPage extends BasePage {
   readonly registerButton: Locator;
   readonly errorMessage: Locator;
 
+  private readonly fieldLocators: Record<LoginField, Locator>;
+  private readonly buttonActions: Record<LoginButton, () => Promise<void>>;
+
   constructor(page: Page) {
     super(page);
     this.loginSubtitle = page.getByText("Login to your account");
@@ -25,48 +28,43 @@ export class LoginPage extends BasePage {
     this.registerEmailField = page.locator('[data-qa="signup-email"]');
     this.registerButton = page.locator('[data-qa="signup-button"]');
     this.errorMessage = page.getByText("Your email or password is incorrect!");
+
+    this.fieldLocators = {
+      [LoginField.LOGIN_EMAIL]: this.loginEmailField,
+      [LoginField.LOGIN_PASSWORD]: this.loginPasswordField,
+      [LoginField.REGISTER_EMAIL]: this.registerEmailField,
+      [LoginField.REGISTER_NAME]: this.registerNameField,
+    };
+
+    this.buttonActions = {
+      [LoginButton.LOGIN_BUTTON]: async () => await this.loginButton.click(),
+      [LoginButton.REGISTER_BUTTON]: async () =>
+        await this.registerButton.click(),
+    };
   }
 
   /**
    * fillField
    */
   public async fillField(field: LoginField, content: string) {
-    switch (field) {
-      case LoginField.LOGIN_EMAIL:
-        await this.loginEmailField.fill(content);
-        break;
-      case LoginField.LOGIN_PASSWORD:
-        await this.loginPasswordField.fill(content);
-        break;
-      case LoginField.REGISTER_EMAIL:
-        await this.registerEmailField.fill(content);
-        break;
-      case LoginField.REGISTER_NAME:
-        await this.registerNameField.fill(content);
-        break;
-
-      default:
-        console.error(
-          `Invalid field: ${field}. Please use one of the supported fields.`
-        );
-        break;
+    const fieldLocator = this.fieldLocators[field];
+    if (fieldLocator) {
+      await fieldLocator.fill(content);
+    } else {
+      console.error(
+        `Invalid field: ${field.toString}. Please use one of the supported fields.`
+      );
     }
   }
 
   public async clickButton(button: LoginButton) {
-    switch (button) {
-      case LoginButton.LOGIN_BUTTON:
-        await this.loginButton.click();
-        break;
-      case LoginButton.REGISTER_BUTTON:
-        await this.registerButton.click();
-        break;
-
-      default:
-        console.error(
-          `Invalid button: ${button}. Please use one of the supported button.`
-        );
-        break;
+    const buttonAction = this.buttonActions[button];
+    if (buttonAction) {
+      await buttonAction();
+    } else {
+      console.error(
+        `Invalid button: ${button}. Please use one of the supported button.`
+      );
     }
   }
 

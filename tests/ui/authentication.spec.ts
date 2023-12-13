@@ -6,7 +6,7 @@ import { NavBarButton } from "../../helpers/NavBarEnums";
 import { LoginButton, LoginField } from "../../helpers/LoginEnums";
 
 test.describe("Register/Login", () => {
-  test.only("User should be able to register through the UI", async ({
+  test.only("Error message should be displayed when using invalid credentials", async ({
     page,
   }) => {
     const navBar = new NavBar(page);
