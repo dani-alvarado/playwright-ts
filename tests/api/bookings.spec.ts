@@ -11,7 +11,7 @@ test.describe("Bookings", () => {
   let bookingData: BookingData;
 
   test.beforeAll(async () => {
-    bookingData = Object.assign(new BookingData(), data);
+    bookingData = data as BookingData;
   });
 
   test("User should be able to create a booking", async ({ request }) => {
