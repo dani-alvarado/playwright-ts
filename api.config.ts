@@ -1,10 +1,13 @@
 import { defineConfig, devices } from "@playwright/test";
+import { config as dotenvConfig } from "dotenv";
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
 // require('dotenv').config();
+
+dotenvConfig();
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -20,11 +23,11 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: "html",
+  reporter: [["line"], ["allure-playwright"]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: "https://restful-booker.herokuapp.com",
+    baseURL: process.env.API_BASE_URL || "https://restful-booker.herokuapp.com",
     extraHTTPHeaders: {
       "Content-Type": "application/json",
     },
