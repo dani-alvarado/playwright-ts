@@ -13,14 +13,15 @@
     "test:chromium:headed": "playwright test --project=chromium --headed",
     "test:firefox:headed": "playwright test --project=firefox --headed",
     "test:webkit:headed": "playwright test --project=webkit --headed",
-    "test:headed": "playwright test -headed"
+    "test:headed": "playwright test --headed"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.40.0",
+    "@playwright/test": "^1.40.1",
     "@types/node": "^20.9.2",
+    "allure-playwright": "^2.10.0",
     "dotenv": "^16.3.1"
   }
 }
