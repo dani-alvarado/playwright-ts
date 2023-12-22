@@ -11,6 +11,7 @@ export class NavBar extends BasePage {
   readonly testCasesButton: Locator;
   readonly apiTestingButton: Locator;
   readonly contactButton: Locator;
+  private readonly buttonActions: Record<NavBarButton, () => Promise<void>>;
 
   constructor(page: Page) {
     super(page);
@@ -22,37 +23,30 @@ export class NavBar extends BasePage {
     this.testCasesButton = page.locator("a", { hasText: "Test Cases" });
     this.apiTestingButton = page.locator("a", { hasText: "Api Testing" });
     this.contactButton = page.locator("a", { hasText: "Contact" });
+
+    this.buttonActions = {
+      [NavBarButton.HOME]: async () => await this.homeButton.click(),
+      [NavBarButton.PRODUCTS]: async () => await this.productButton.click(),
+      [NavBarButton.CART]: async () => await this.cartButton.click(),
+      [NavBarButton.LOGIN]: async () => await this.loginButton.click(),
+      [NavBarButton.TEST_CASES]: async () => await this.testCasesButton.click(),
+      [NavBarButton.API_TESTING]: async () =>
+        await this.apiTestingButton.click(),
+      [NavBarButton.CONTACT]: async () => await this.contactButton.click(),
+    };
   }
 
   /**
    * clickElement
    */
   public async clickElement(button: NavBarButton) {
-    switch (button) {
-      case NavBarButton.HOME:
-        await this.homeButton.click();
-        break;
-      case NavBarButton.PRODUCTS:
-        await this.productButton.click();
-        break;
-      case NavBarButton.CART:
-        await this.cartButton.click();
-        break;
-      case NavBarButton.LOGIN:
-        await this.loginButton.click();
-        break;
-      case NavBarButton.TEST_CASES:
-        await this.testCasesButton.click();
-        break;
-      case NavBarButton.API_TESTING:
-        await this.apiTestingButton.click();
-        break;
-      case NavBarButton.CONTACT:
-        await this.contactButton.click();
-        break;
-      default:
-        console.log("the button does not exist");
-        break;
+    const buttonAction = this.buttonActions[button];
+    if (buttonAction) {
+      await buttonAction();
+    } else {
+      console.error(
+        `Invalid button: ${button.toString()}. Please use one of the supported button.`
+      );
     }
   }
 

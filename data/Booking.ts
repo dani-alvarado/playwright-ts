@@ -1,4 +1,4 @@
-export class BookingData {
+export interface BookingData {
   firstname: string;
   lastname: string;
   totalprice: number;

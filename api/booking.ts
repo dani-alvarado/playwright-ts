@@ -47,14 +47,7 @@ export class Booking {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      data: {
-        firstname: data.firstname,
-        lastname: data.lastname,
-        totalprice: data.totalprice,
-        depositpaid: data.depositpaid,
-        bookingdates: data.bookingdates,
-        additionalneeds: data.additionalneeds,
-      },
+      data: data,
     });
     return await response;
   }
