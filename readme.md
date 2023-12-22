@@ -9,6 +9,7 @@ This is a repository that contains a testing framework done in playwright using 
 3. [UI Automation](#ui-automation)
 4. [API Automation](#api-automation)
 5. [Jenkins](#jenkins)
+6. [Reports](#reports)
 
 ## Installation
 
@@ -68,3 +69,13 @@ npm run test:api
 ## Jenkins
 
 The repository contains a Jenkinsfile that allows you to create a pipeline in a jenkins server.
+
+## Reports
+
+The framework has support for Allure Reports, if you want to see the report once you have run the tests, make sure you have the allure-commandline installed on your machine and run the following command:
+
+```
+npm run allure-report
+```
+
+Once you do, you will have your allure report running and you'll see the execution details
